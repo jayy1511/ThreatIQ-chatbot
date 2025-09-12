@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .routers import auth  # NEW
+from .routers import auth, analyze   # add analyze router
 
 app = FastAPI(title="ThreatIQ API")
 
@@ -12,7 +12,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(auth.router)  # NEW
+app.include_router(auth.router)
+app.include_router(analyze.router)   # NEW
 
 @app.get("/health")
 def health():
