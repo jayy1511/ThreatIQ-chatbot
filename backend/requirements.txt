@@ -10,3 +10,4 @@ gpt4all==2.7.0
 pydantic==2.8.2
 tldextract==5.1.2
 language-tool-python==2.7.1
+google-generativeai

@@ -10,5 +10,6 @@ class Settings(BaseModel):
     VIRUSTOTAL_API_KEY: str | None = os.getenv("VIRUSTOTAL_API_KEY")
     MODEL_NAME: str = os.getenv("MODEL_NAME", "orca-mini-3b.Q4_0.gguf")
     DB_URL: str = os.getenv("DB_URL", "sqlite:///./threatiq.db")
+    GEMINI_API_KEY: str | None = os.getenv("GEMINI_API_KEY")
 
 settings = Settings()

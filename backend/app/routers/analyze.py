@@ -3,6 +3,7 @@ from ..deps import get_current_user
 from ..intel.heuristics import check_keywords, check_urls, check_grammar, check_sender
 from ..intel.whois_check import check_domain_age
 from ..intel.virustotal import check_url_virustotal
+from ..intel.llm import analyze_with_gemini   # NEW
 
 router = APIRouter(prefix="/analyze", tags=["analyze"])
 
@@ -35,7 +36,11 @@ def analyze_message(
     results["virustotal"] = vt_results
     results["whois"] = whois_results
 
+    # NEW: AI analysis using Gemini
+    ai_result = analyze_with_gemini(text, results)
+
     return {
         "user": current_user,
-        "analysis": results
+        "analysis": results,
+        "ai_result": ai_result
     }
